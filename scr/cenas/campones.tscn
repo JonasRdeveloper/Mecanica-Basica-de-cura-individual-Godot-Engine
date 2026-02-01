@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bl2v2ca6lx3ei"]
+
+[ext_resource type="Script" uid="uid://bsewtrxmeh38u" path="res://scr/roteiros/campones.gd" id="1_i80bn"]
+[ext_resource type="PackedScene" uid="uid://yek2qqwxtjm" path="res://scr/cenas/GameManager.tscn" id="2_t1sdb"]
+[ext_resource type="PackedScene" uid="uid://c60ilel2600uk" path="res://scr/cenas/tela_de_saude.tscn" id="3_uh1j3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f3pq6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i80bn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_622jw"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Campones" type="CharacterBody3D" unique_id=1230354255 groups=["feridos"]]
+script = ExtResource("1_i80bn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=542745018]
+mesh = SubResource("CapsuleMesh_f3pq6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1430318074]
+shape = SubResource("CapsuleShape3D_i80bn")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=502552148]
+size = Vector2i(190, 28)
+
+[node name="Tela_de_saude" parent="SubViewport" unique_id=1854380601 node_paths=PackedStringArray("componente_saude") instance=ExtResource("3_uh1j3")]
+componente_saude = NodePath("../../GameManager")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=159382998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+texture = SubResource("ViewportTexture_622jw")
+
+[node name="GameManager" parent="." unique_id=1556871616 instance=ExtResource("2_t1sdb")]

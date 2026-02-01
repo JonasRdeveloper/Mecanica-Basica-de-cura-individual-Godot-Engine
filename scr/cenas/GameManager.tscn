@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://yek2qqwxtjm"]
+
+[ext_resource type="Script" uid="uid://ngg2yetb0aor" path="res://scr/roteiros/Health.gd" id="1"]
+
+[node name="GameManager" type="Node3D" unique_id=1556871616]
+script = ExtResource("1")

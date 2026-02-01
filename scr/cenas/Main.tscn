@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://di3wnwkcvob70"]
+
+[ext_resource type="Script" uid="uid://csbwi5utu13fr" path="res://scr/roteiros/main.gd" id="1_08feb"]
+[ext_resource type="PackedScene" uid="uid://bfuv1wk2jq7i4" path="res://scr/cenas/Player.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bl2v2ca6lx3ei" path="res://scr/cenas/campones.tscn" id="2_dux3m"]
+
+[sub_resource type="PlaneMesh" id="3"]
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="4"]
+size = Vector3(50, 1, 50)
+
+[node name="Main" type="Node3D" unique_id=1959959340]
+script = ExtResource("1_08feb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=631148766]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 10, 0)
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1638444918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground" unique_id=38482069]
+mesh = SubResource("3")
+
+[node name="GroundCollision" type="CollisionShape3D" parent="Ground" unique_id=1539549519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("4")
+
+[node name="Player1" parent="." unique_id=675418574 instance=ExtResource("2")]
+
+[node name="Campones" parent="." unique_id=1230354255 instance=ExtResource("2_dux3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.7871957)
+
+[node name="Campones2" parent="." unique_id=870637586 instance=ExtResource("2_dux3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15467, 0, -5.7871957)

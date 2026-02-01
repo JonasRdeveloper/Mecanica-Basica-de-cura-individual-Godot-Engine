@@ -1,0 +1,8 @@
+CharacterBody3D
+Node
+ProgressBar
+Sprite3D
+SubViewport
+MeshInstance3D
+CollisionShape3D
+Camera3D
