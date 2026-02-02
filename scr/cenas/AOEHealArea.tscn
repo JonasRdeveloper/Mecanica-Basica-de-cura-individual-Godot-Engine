@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ciutmu2tikw8p"]
+
+[ext_resource type="Script" uid="uid://i4hj05nhn7y" path="res://scr/roteiros/aoe_heal_area.gd" id="1_lp53n"]
+[ext_resource type="PackedScene" uid="uid://gm8mive406v5" path="res://scr/cenas/gpu_particles_3d.tscn" id="2_xd2fl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lp53n"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+albedo_color = Color(1, 1, 1, 0.11372549)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_crva8"]
+material = SubResource("StandardMaterial3D_lp53n")
+top_radius = 5.0
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lp53n"]
+height = 0.1
+radius = 5.0
+
+[node name="AoeHealArea" type="Area3D" unique_id=253591162]
+script = ExtResource("1_lp53n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=536397231]
+mesh = SubResource("CylinderMesh_crva8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1695456142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06796229, 0)
+shape = SubResource("CylinderShape3D_lp53n")
+
+[node name="TimerCura" type="Timer" parent="." unique_id=427866667]
+
+[node name="GPUParticles3D" parent="." unique_id=2139900619 instance=ExtResource("2_xd2fl")]
+emitting = false

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bfuv1wk2jq7i4"]
 
 [ext_resource type="Script" uid="uid://4pg1lfrj7b0a" path="res://scr/roteiros/sacerdote.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://ciutmu2tikw8p" path="res://scr/cenas/AOEHealArea.tscn" id="2_eklns"]
+[ext_resource type="PackedScene" uid="uid://msokqwswrg11" path="res://scr/cenas/aoe_heal_area_pre_visual.tscn" id="3_dwe4a"]
 
 [sub_resource type="BoxMesh" id="2"]
 
@@ -11,6 +13,8 @@ viewport_path = NodePath("SubViewport")
 
 [node name="Player" type="CharacterBody3D" unique_id=1332171786]
 script = ExtResource("1")
+cena_area_cura_aoe = ExtResource("2_eklns")
+cena_pre_visualizacao_aoe = ExtResource("3_dwe4a")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=192639288]
 mesh = SubResource("2")

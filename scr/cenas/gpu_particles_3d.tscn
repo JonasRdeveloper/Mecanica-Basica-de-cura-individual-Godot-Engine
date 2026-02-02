@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://gm8mive406v5"]
+
+[ext_resource type="Texture2D" uid="uid://ko8yglse30g4" path="res://addons/kenney_particle_pack/circle_05.png" id="1_x5tpo"]
+
+[sub_resource type="Curve" id="Curve_trmbh"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.24607804, 1), 0.0, 0.0, 0, 0, Vector2(0.35341364, -1), 0.0, 0.0, 0, 0, Vector2(0.50208646, 1), 0.0, 0.0, 0, 0, Vector2(0.6018762, -1), 0.0, 0.0, 0, 0, Vector2(0.75224334, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_ecv2d"]
+curve = SubResource("Curve_trmbh")
+
+[sub_resource type="Curve" id="Curve_kum3e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_preoy"]
+curve = SubResource("Curve_kum3e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vmrfp"]
+emission_shape_offset = Vector3(0, 2.5, 0)
+emission_shape = 2
+emission_sphere_radius = 5.0
+gravity = Vector3(0, 9.8, 0)
+linear_accel_min = 45.979996
+linear_accel_max = 49.999996
+linear_accel_curve = SubResource("CurveTexture_ecv2d")
+scale_curve = SubResource("CurveTexture_preoy")
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_uufvn"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_x5tpo")
+orm_texture = ExtResource("1_x5tpo")
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_0j06r"]
+material = SubResource("ORMMaterial3D_uufvn")
+
+[node name="GPUParticles3D" type="GPUParticles3D" unique_id=2139900619]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_vmrfp")
+draw_pass_1 = SubResource("QuadMesh_0j06r")

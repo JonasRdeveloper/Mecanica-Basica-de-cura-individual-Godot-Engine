@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://msokqwswrg11"]
+
+[ext_resource type="PackedScene" uid="uid://ciutmu2tikw8p" path="res://scr/cenas/AOEHealArea.tscn" id="1_fy10i"]
+
+[node name="AoeHealAreaPreVisual" unique_id=253591162 instance=ExtResource("1_fy10i")]
+script = null
