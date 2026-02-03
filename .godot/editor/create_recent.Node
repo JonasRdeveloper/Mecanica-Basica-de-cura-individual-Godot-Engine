@@ -1,8 +1,8 @@
+MeshInstance3D
+CollisionShape3D
 GPUParticles3D
 CPUParticles3D
 Timer
-CollisionShape3D
-MeshInstance3D
 Area3D
 CharacterBody3D
 Node

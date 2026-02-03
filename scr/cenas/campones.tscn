@@ -11,6 +11,12 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_622jw"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_t1sdb"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t1sdb"]
+material = SubResource("ORMMaterial3D_t1sdb")
+
 [node name="Campones" type="CharacterBody3D" unique_id=1230354255 groups=["feridos"]]
 script = ExtResource("1_i80bn")
 
@@ -31,3 +37,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 texture = SubResource("ViewportTexture_622jw")
 
 [node name="GameManager" parent="." unique_id=1556871616 instance=ExtResource("2_t1sdb")]
+
+[node name="Indicador_de_selecao" type="MeshInstance3D" parent="." unique_id=1661682622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+visible = false
+mesh = SubResource("PlaneMesh_t1sdb")

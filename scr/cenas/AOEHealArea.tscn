@@ -1,28 +1,69 @@
 [gd_scene format=3 uid="uid://ciutmu2tikw8p"]
 
 [ext_resource type="Script" uid="uid://i4hj05nhn7y" path="res://scr/roteiros/aoe_heal_area.gd" id="1_lp53n"]
+[ext_resource type="Shader" uid="uid://cdpgor2dxf1kk" path="res://materials/CuraAOE/AOEHealArea.gdshader" id="2_rgmhj"]
 [ext_resource type="PackedScene" uid="uid://gm8mive406v5" path="res://scr/cenas/gpu_particles_3d.tscn" id="2_xd2fl"]
+[ext_resource type="Shader" uid="uid://dmprokrhbldf5" path="res://materials/CuraAOE/Pilar_de_luz.gdshader" id="3_wtk61"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lp53n"]
-transparency = 1
-blend_mode = 1
-cull_mode = 2
-albedo_color = Color(1, 1, 1, 0.11372549)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtk61"]
+render_priority = 0
+shader = ExtResource("2_rgmhj")
+shader_parameter/cor_primaria = Color(1, 0.9, 0.3, 0.6)
+shader_parameter/cor_secundaria = Color(1, 0.6, 0.1, 0.4)
+shader_parameter/intensidade_glow = 2.0
+shader_parameter/velocidade_ondas = 2.0
+shader_parameter/frequencia_ondas = 5.0
+shader_parameter/amplitude_ondas = 0.5
+shader_parameter/densidade_ruido = 1.0
+shader_parameter/velocidade_ruido = 0.5
+shader_parameter/fator_luz = 1.2
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_crva8"]
-material = SubResource("StandardMaterial3D_lp53n")
+material = SubResource("ShaderMaterial_wtk61")
 top_radius = 5.0
 height = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qj2a3"]
+render_priority = 0
+shader = ExtResource("3_wtk61")
+shader_parameter/cor_primaria = Color(1, 0.95, 0.4, 0.7)
+shader_parameter/cor_secundaria = Color(1, 0.7, 0.2, 0.5)
+shader_parameter/intensidade_glow = 2.5
+shader_parameter/velocidade_ondas = 1.0
+shader_parameter/frequencia_ondas = 10.0
+shader_parameter/amplitude_ondas = 0.8
+shader_parameter/densidade_ruido = 1.2
+shader_parameter/velocidade_ruido = 0.8
+shader_parameter/fator_distorcao = 1.0
+shader_parameter/fase_surgimento = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h7ybv"]
+material = SubResource("ShaderMaterial_qj2a3")
+top_radius = 5.0
+bottom_radius = 5.0
+height = 4.6
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lp53n"]
 height = 0.1
 radius = 5.0
 
-[node name="AoeHealArea" type="Area3D" unique_id=253591162]
+[node name="AoeHealArea" type="Area3D" unique_id=253591162 node_paths=PackedStringArray("mesh_visual", "cilindro_luz")]
 script = ExtResource("1_lp53n")
+cura_por_tick = null
+duracao_total = null
+intervalo_cura = null
+duracao_surgimento = null
+altura_maxima_cilindro = null
+mesh_visual = NodePath("MeshInstance3D")
+cilindro_luz = NodePath("MeshInstance3D2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=536397231]
 mesh = SubResource("CylinderMesh_crva8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1464811550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3519115, 0)
+visible = false
+mesh = SubResource("CylinderMesh_h7ybv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1695456142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06796229, 0)

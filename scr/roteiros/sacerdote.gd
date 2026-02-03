@@ -95,10 +95,27 @@ func _selecionar_npc() -> void:
 	
 	var result = estado_espaco.intersect_ray(query)
 	
+	# 1. Sempre esconde o indicador do NPC atualmente selecionado (se existir)
+	if npc_selecionado != null:
+		var indicador_antigo = npc_selecionado.get_node_or_null("Indicador_de_selecao")
+		if indicador_antigo:
+			indicador_antigo.visible = false
+			print("Deselecionou NPC anterior: ", npc_selecionado.name)
+	
+	# 2. Verifica se acertou um novo NPC válido
 	if result and result.collider is CharacterBody3D:
 		npc_selecionado = result.collider
+		
 		print("NPC selecionado: ", npc_selecionado.name)
+		
+		# Mostra o indicador do novo selecionado
+		var indicador_novo = npc_selecionado.get_node_or_null("Indicador_de_selecao")
+		if indicador_novo:
+			indicador_novo.visible = true
+		else:
+			print("Aviso: NPC selecionado não tem nó 'Indicador_de_selecao'")
 	else:
+		# Nenhum NPC válido clicado → limpa a seleção
 		npc_selecionado = null
 		print("Nenhum NPC selecionado.")
 
@@ -168,6 +185,7 @@ func _colocar_area_cura_aoe() -> void:
 	get_tree().current_scene.add_child(instancia_area)
 	instancia_area.global_position = pre_visualizacao_instancia.global_position
 	instancia_area.get_node("GPUParticles3D").set_emitting(true)
+	instancia_area.get_node("MeshInstance3D2").set_visible(true)
 	
 	print("Área de Cura AOE colocada em: ", instancia_area.global_position)
 	
