@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bsewtrxmeh38u" path="res://scr/roteiros/campones.gd" id="1_i80bn"]
 [ext_resource type="PackedScene" uid="uid://yek2qqwxtjm" path="res://scr/cenas/GameManager.tscn" id="2_t1sdb"]
 [ext_resource type="PackedScene" uid="uid://c60ilel2600uk" path="res://scr/cenas/tela_de_saude.tscn" id="3_uh1j3"]
+[ext_resource type="Texture2D" uid="uid://bxyjox5lplqsv" path="res://addons/kenney_particle_pack/star_09.png" id="4_uh1j3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f3pq6"]
 
@@ -16,6 +17,18 @@ albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t1sdb"]
 material = SubResource("ORMMaterial3D_t1sdb")
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_2q0ys"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("4_uh1j3")
+orm_texture = ExtResource("4_uh1j3")
+emission_enabled = true
+emission_energy_multiplier = 16.0
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_qwcmr"]
+material = SubResource("ORMMaterial3D_2q0ys")
 
 [node name="Campones" type="CharacterBody3D" unique_id=1230354255 groups=["feridos"]]
 script = ExtResource("1_i80bn")
@@ -34,6 +47,7 @@ componente_saude = NodePath("../../GameManager")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=159382998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
 texture = SubResource("ViewportTexture_622jw")
 
 [node name="GameManager" parent="." unique_id=1556871616 instance=ExtResource("2_t1sdb")]
@@ -42,3 +56,14 @@ texture = SubResource("ViewportTexture_622jw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
 visible = false
 mesh = SubResource("PlaneMesh_t1sdb")
+
+[node name="Particulas_de_cura" type="CPUParticles3D" parent="." unique_id=368020110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0865728, 0)
+emitting = false
+amount = 10
+one_shot = true
+mesh = SubResource("QuadMesh_qwcmr")
+emission_shape = 2
+emission_sphere_radius = 2.0
+particle_flag_align_y = true
+particle_flag_rotate_y = true

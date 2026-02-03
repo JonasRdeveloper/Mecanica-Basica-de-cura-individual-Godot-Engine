@@ -1,6 +1,5 @@
-res://scr/cenas/campones.tscn
+res://scr/roteiros/AreaDanoAOE.gd
+res://scr/cenas/Main.tscn
 res://materials/CuraAOE/AOEHealArea.gdshader
 res://materials/CuraAOE/Pilar_de_luz.gdshader
 res://materials/outline_material/outline_material.gdshader
-res://scr/roteiros/sacerdote.gd
-res://scr/cenas/Main.tscn

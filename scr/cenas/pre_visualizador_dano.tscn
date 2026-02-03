@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://56j0kuf6vwvq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6igq"]
+albedo_color = Color(0.6283103, 1.7567725e-06, 4.3317675e-07, 1)
+metallic = 1.0
+roughness = 0.7
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w6igq"]
+material = SubResource("StandardMaterial3D_w6igq")
+top_radius = 5.0
+bottom_radius = 1.0
+height = 0.1
+
+[node name="PreVisualizadorDano" type="Node3D" unique_id=1879536925]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2084472184]
+mesh = SubResource("CylinderMesh_w6igq")

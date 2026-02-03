@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://csbwi5utu13fr" path="res://scr/roteiros/main.gd" id="1_08feb"]
 [ext_resource type="PackedScene" uid="uid://bfuv1wk2jq7i4" path="res://scr/cenas/Player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bl2v2ca6lx3ei" path="res://scr/cenas/campones.tscn" id="2_dux3m"]
+[ext_resource type="PackedScene" uid="uid://cyxrcpoiqogxv" path="res://scr/cenas/AreaDanoAOE.tscn" id="3_yvxxy"]
+[ext_resource type="PackedScene" uid="uid://56j0kuf6vwvq" path="res://scr/cenas/pre_visualizador_dano.tscn" id="4_0j6c1"]
 
 [sub_resource type="PlaneMesh" id="3"]
 size = Vector2(50, 50)
@@ -27,6 +29,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("4")
 
 [node name="Player1" parent="." unique_id=675418574 instance=ExtResource("2")]
+cena_area_dano_aoe = ExtResource("3_yvxxy")
+cena_pre_visualizacao_dano_aoe = ExtResource("4_0j6c1")
 
 [node name="Campones" parent="." unique_id=1230354255 instance=ExtResource("2_dux3m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.7871957)

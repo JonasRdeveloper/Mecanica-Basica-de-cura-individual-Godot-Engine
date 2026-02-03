@@ -1,9 +1,9 @@
 MeshInstance3D
-CollisionShape3D
-GPUParticles3D
-CPUParticles3D
 Timer
+CollisionShape3D
 Area3D
+CPUParticles3D
+GPUParticles3D
 CharacterBody3D
 Node
 ProgressBar

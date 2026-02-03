@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cyxrcpoiqogxv"]
+
+[ext_resource type="Script" uid="uid://clc6bsr4tosbr" path="res://scr/roteiros/AreaDanoAOE.gd" id="1_jrhwr"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2py8u"]
+radius = 5.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jrhwr"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 8.0
+
+[node name="AreaDanoAoe" type="Area3D" unique_id=263638340]
+script = ExtResource("1_jrhwr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1210033265]
+shape = SubResource("CylinderShape3D_2py8u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=709429142]
+
+[node name="PilarDano" type="MeshInstance3D" parent="." unique_id=1441778643]
+mesh = SubResource("CylinderMesh_jrhwr")
+
+[node name="TimerDano" type="Timer" parent="." unique_id=1588554293]
+wait_time = 0.5
